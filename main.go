@@ -1,0 +1,3 @@
+package outil
+
+func main() {}
