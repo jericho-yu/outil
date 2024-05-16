@@ -8,7 +8,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	"otuil/outil/common"
+	"github.com/jericho-yu/outil/common"
 )
 
 type (
