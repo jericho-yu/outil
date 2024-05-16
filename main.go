@@ -1,3 +1,3 @@
-package outil
+package main
 
 func main() {}
