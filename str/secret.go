@@ -1,4 +1,4 @@
-package string
+package str
 
 import (
 	"bytes"
@@ -86,7 +86,6 @@ func (Secret) EncryptCBC(plainText, key, iv []byte, ivs ...[]byte) ([]byte, erro
 }
 
 func (Secret) DecryptAuthorization(token, secretKey string, iv []byte) (DecryptStr, uuid string, err error) {
-
 	if token == "" {
 		panic(errors.New("decrypt Token empty"))
 	}

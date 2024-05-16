@@ -1,4 +1,4 @@
-package string
+package str
 
 import (
 	"crypto/rand"
@@ -96,7 +96,7 @@ func N(min, max int) int {
 	return Intn(max+(0-min)+1) - (0 - min)
 }
 
-// S returns a random string which contains digits and letters, and its length is `n`.
+// S returns a random str which contains digits and letters, and its length is `n`.
 // The optional parameter `symbols` specifies whether the result could contain symbols,
 // which is false in default.
 func S(n int, symbols ...bool) string {
@@ -131,8 +131,8 @@ func D(min, max time.Duration) time.Duration {
 	return time.Duration(n * multiple)
 }
 
-// Str randomly picks and returns `n` count of chars from given string `s`.
-// It also supports unicode string like Chinese/Russian/Japanese, etc.
+// Str randomly picks and returns `n` count of chars from given str `s`.
+// It also supports unicode str like Chinese/Russian/Japanese, etc.
 func Str(s string, n int) string {
 	if n <= 0 {
 		return ""
@@ -154,7 +154,7 @@ func Str(s string, n int) string {
 	return string(b)
 }
 
-// Digits returns a random string which contains only digits, and its length is `n`.
+// Digits returns a random str which contains only digits, and its length is `n`.
 func Digits(n int) string {
 	if n <= 0 {
 		return ""
@@ -169,7 +169,7 @@ func Digits(n int) string {
 	return string(b)
 }
 
-// Letters returns a random string which contains only letters, and its length is `n`.
+// Letters returns a random str which contains only letters, and its length is `n`.
 func Letters(n int) string {
 	if n <= 0 {
 		return ""
@@ -184,7 +184,7 @@ func Letters(n int) string {
 	return string(b)
 }
 
-// Symbols returns a random string which contains only symbols, and its length is `n`.
+// Symbols returns a random str which contains only symbols, and its length is `n`.
 func Symbols(n int) string {
 	if n <= 0 {
 		return ""
