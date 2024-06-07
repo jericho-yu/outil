@@ -9,9 +9,7 @@ import (
 
 type (
 	// 字典锁：一个锁的集合
-	MapLock struct {
-		locks sync.Map
-	}
+	MapLock struct{ locks sync.Map }
 
 	// 锁项：一个集合锁中的每一项，包含：锁状态、锁值、超时时间、定时器
 	itemLock struct {
@@ -35,7 +33,6 @@ func NewMapLock() *MapLock {
 // SingleMapLock 单例化：字典锁
 func SingleMapLock() *MapLock {
 	onceMapLock.Do(func() { mapLockIns = &MapLock{locks: sync.Map{}} })
-
 	return mapLockIns
 }
 
