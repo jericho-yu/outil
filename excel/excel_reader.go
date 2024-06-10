@@ -62,11 +62,14 @@ func (r *ExcelReader) ToMap() map[uint64]map[string]string {
 	_data := make(map[uint64]map[string]string)
 
 	for rowNumber, row := range r.ToList() {
-		if len(r.GetTitle()) != len(row) {
-			panic(fmt.Errorf("表头数量与实际数据列不匹配（第%d行）", rowNumber))
-		}
+		// if len(r.GetTitle()) != len(row) {
+		// 	panic(fmt.Errorf("表头数量与实际数据列不匹配（第%d行）", rowNumber))
+		// }
 
 		_row := make(map[string]string)
+		for _, title := range r.GetTitle() {
+			_row[title] = "nil"
+		}
 		for k, v := range row {
 			_row[r.GetTitle()[k]] = v
 		}
