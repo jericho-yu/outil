@@ -54,7 +54,7 @@ func (r *ExcelReader) ToList() map[uint64][]string {
 }
 
 // ToMap 获取数据（map类型）
-func (r *ExcelReader) ToMap() map[uint64]map[string]string {
+func (r *ExcelReader) ToMap(defaultValue string) map[uint64]map[string]string {
 	if len(r.GetTitle()) == 0 {
 		panic(errors.New("未设置表头"))
 	}
@@ -68,7 +68,7 @@ func (r *ExcelReader) ToMap() map[uint64]map[string]string {
 
 		_row := make(map[string]string)
 		for _, title := range r.GetTitle() {
-			_row[title] = "nil"
+			_row[title] = defaultValue
 		}
 		for k, v := range row {
 			_row[r.GetTitle()[k]] = v
