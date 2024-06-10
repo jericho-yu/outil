@@ -16,7 +16,8 @@ func GetKeys[T1 comparable, T2 ~struct{} | string | int |
 	return keys
 }
 
-func GetVal(obj map[string]any, key string, def any) any {
+// GetValue 获取值
+func GetValue(obj map[string]any, key string, def any) any {
 	if key == "" {
 		return def
 	}
@@ -29,7 +30,7 @@ func GetVal(obj map[string]any, key string, def any) any {
 	moreKeys := keys[1:]
 	if val, ok := obj[currentKey]; ok {
 		if currentKey != "" {
-			return GetVal(val.(map[string]any), strings.Join(moreKeys, "."), def)
+			return GetValue(val.(map[string]any), strings.Join(moreKeys, "."), def)
 		} else {
 			return val
 		}
@@ -38,7 +39,8 @@ func GetVal(obj map[string]any, key string, def any) any {
 	return def
 }
 
-func SetVal(obj map[string]any, key string, val, def any) {
+// SetValue 设置值
+func SetValue(obj map[string]any, key string, val, def any) {
 	if key == "" {
 		return
 	}
@@ -51,7 +53,7 @@ func SetVal(obj map[string]any, key string, val, def any) {
 		if !exists || childObj == nil {
 			obj[currentKey] = make(map[string]any)
 		}
-		SetVal(obj[currentKey].(map[string]any), strings.Join(moreKeys, "."), val, def)
+		SetValue(obj[currentKey].(map[string]any), strings.Join(moreKeys, "."), val, def)
 	} else {
 		if val == nil {
 			obj[currentKey] = def
