@@ -6,7 +6,9 @@ import (
 )
 
 // GetKeys 获取一个字典中所有的key
-func GetKeys[T1 comparable, T2 any](sources map[T1]T2) []T1 {
+func GetKeys[T1 comparable, T2 ~struct{} | string | int |
+	int8 | int16 | int32 | int64 | uint |
+	uint8 | uint16 | uint32 | uint64](sources map[T1]T2) []T1 {
 	keys := make([]T1, 0, len(sources))
 	for idx, _ := range sources {
 		keys = append(keys, idx)
