@@ -5,6 +5,15 @@ import (
 	"strings"
 )
 
+// GetKeys 获取一个字典中所有的key
+func GetKeys[T comparable](sources map[T]any) []T {
+	keys := make([]T, 0, len(sources))
+	for idx, _ := range sources {
+		keys = append(keys, idx)
+	}
+	return keys
+}
+
 func GetVal(obj map[string]any, key string, def any) any {
 	if key == "" {
 		return def
