@@ -21,17 +21,18 @@ type (
 )
 
 var (
-	onceMapLock sync.Once
-	mapLockIns  *MapLock
+	onceMapLock   sync.Once
+	mapLockIns    *MapLock
+	MapLockHelper MapLock
 )
 
-// NewMapLock 实例化：字典锁
-func NewMapLock() *MapLock {
+// New 实例化：字典锁
+func (MapLock) New() *MapLock {
 	return &MapLock{locks: sync.Map{}}
 }
 
 // SingleMapLock 单例化：字典锁
-func SingleMapLock() *MapLock {
+func (MapLock) Single() *MapLock {
 	onceMapLock.Do(func() { mapLockIns = &MapLock{locks: sync.Map{}} })
 	return mapLockIns
 }
@@ -129,7 +130,7 @@ func (MapLock) Demo() {
 	}
 
 	// 获取字典锁对象
-	ml := SingleMapLock()
+	ml := MapLockHelper.Single()
 
 	// 批量创建锁
 	storeErr := ml.StoreMany(k8sLinks)
